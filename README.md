@@ -18,3 +18,5 @@ I also want to make clear that this issue is reproducable with ANY default value
 1. npm ci
 2. ember s
 3. go to http://localhost:4200/foods
+
+The issue was originally found in Ember 3.28 but is reproducible in 5.11.
