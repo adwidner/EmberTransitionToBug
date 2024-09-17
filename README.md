@@ -15,7 +15,7 @@ If you click the "Set to non-default" button in the app, you can see that clicki
 I also want to make clear that this issue is reproducable with ANY default value, not just `null`.
 
 ## Repro Steps
-1. npm ci
+1. npm install
 2. ember s
 3. go to http://localhost:4200/foods
 
