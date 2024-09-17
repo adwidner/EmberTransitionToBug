@@ -1,0 +1,25 @@
+{{page-title "Foods"}}
+<p>This app is for reproducing a bug where the router service's <code>transitionTo</code> function needlessly calls the route model hook.
+  When a query parameter has a default value set in the controller and is also set to <code>refreshModel: true</code> in the route,
+  while the parameter is set to the default value, transitions to the route where ANY parameter changes will trigger the model refresh.
+  It is expected that the model hook would only trigger for parameters that have <code>refreshModel: true</code> set in the route and are updated.</p>
+
+<p>For this app example, I set the query parameter <code>nonFoodRelatedParam</code>'s default value to <code>null</code> in the controller and <code>refreshModel: true</code> in the route.
+Clicking on any of the food buttons below will transition to the foods route with an updated <code>food</code> query paramater.
+If you open your web console you can see that the model hook triggers despite the fact that <code>nonFoodRelatedParam</code> was not updated.
+To make things even weirder, the needless hook trigger only happens every other transition.</p>
+
+<p>I want to make clear that this issue does not happen when the problematic parameter is not set to the default value.
+  If you click the "Set to non-default" button below, you can see that clicking the food buttons lo longer reproduces the issue.
+  I also want to make clear that this issue is reproducable with ANY default value, not just <code>null</code>.</p>
+
+<h2>List of Foods</h2>
+<button type="button" {{on "click" (fn this.onFoodClick "apple")}} >Apples</button>
+<button type="button" {{on "click" (fn this.onFoodClick "pizza")}} >Pizza</button>
+<button type="button" {{on "click" (fn this.onFoodClick "tacos")}} >Tacos</button>
+<button type="button" {{on "click" (fn this.onFoodClick "bananas")}} >Bananas</button>
+<button type="button" {{on "click" (fn this.onFoodClick "shrimp")}} >Shrimp</button>
+
+<h2>Non-Food Related Param Status</h2>
+<button type="button" {{on "click" (fn this.setNonFoodRelatedParam null)}} >Set to default (<code>null</code>)</button>
+<button type="button" {{on "click" (fn this.setNonFoodRelatedParam "something")}} >Set to non-default value</button>
