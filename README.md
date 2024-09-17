@@ -13,3 +13,8 @@ To make things even weirder, the needless hook trigger only happens every other 
 I want to make clear that this issue does not happen when the problematic parameter is not set to the default value.
 If you click the "Set to non-default" button in the app, you can see that clicking the food buttons lo longer reproduces the issue.
 I also want to make clear that this issue is reproducable with ANY default value, not just `null`.
+
+## Repro Steps
+1. npm ci
+2. ember s
+3. go to http://localhost:4200/foods
